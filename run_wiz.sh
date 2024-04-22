@@ -1,0 +1,4 @@
+python main.py --global_model 'huggyllama/llama-13b' --data_path  "./data_wiz" --output_dir './nips-llama13b-full-wiz-1-3-10/' --num_communication_rounds 1 --local_num_epochs 3 --full True
+python main.py --global_model 'huggyllama/llama-13b' --data_path  "./data_wiz" --output_dir './nips-llama13b-full-wiz-3-1-10/' --num_communication_rounds 3 --local_num_epochs 1 --full True
+lm_eval --model_args pretrained=./nips-llama13b-full-wiz-1-3-10/10/0/,parallelize=True,load_in_4bit=False, --tasks arc_challenge --num_fewshot 25 --batch_size 16 --output_path ./nips-llama13b-full-wiz-1-3-10/10/0/
+lm_eval --model_args pretrained=./nips-llama13b-full-wiz-3-1-10/10/2/,parallelize=True,load_in_4bit=False, --tasks arc_challenge --num_fewshot 25 --batch_size 16 --output_path ./nips-llama13b-full-wiz-3-1-10/10/2/
