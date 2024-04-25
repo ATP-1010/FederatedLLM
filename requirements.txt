@@ -71,7 +71,6 @@ jsonschema-specifications==2023.12.1
 kiwisolver==1.4.5
 libarchive-c @ file:///tmp/build/80754af9/python-libarchive-c_1617780486945/work
 libmambapy @ file:///croot/mamba-split_1694187754698/work/libmambapy
--e /workspace/lm-evaluation-harness
 loralib==0.1.2
 lxml==5.1.0
 markdown-it-py==3.0.0
