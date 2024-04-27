@@ -4,11 +4,7 @@ cd lm-evaluation-harness
 pip install -e .
 cd ../
 pip install huggingface_hub
-python
-from huggingface_hub import snapshot_download
-snapshot_download(repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0")
-snapshot_download(repo_id="huggyllama/llama-13b")
-exit()
+python download.py
 python main.py --global_model 'TinyLlama/TinyLlama-1.1B-Chat-v1.0' --data_path  "./data_wiz" --output_dir './nips-tinyllama-full-wiz-1-1-10/' --num_communication_rounds 1 --local_num_epochs 1 --full True
 python main.py --global_model 'huggyllama/llama-13b' --data_path  "./data_wiz" --output_dir './nips-llama13b-full-wiz-1-3-10/' --num_communication_rounds 1 --local_num_epochs 3 --full True
 python main.py --global_model 'huggyllama/llama-13b' --data_path  "./data_wiz" --output_dir './nips-llama13b-full-wiz-3-1-10/' --num_communication_rounds 3 --local_num_epochs 1 --full True
