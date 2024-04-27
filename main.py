@@ -18,7 +18,6 @@ import datasets
 from utils.prompter import Prompter
 import numpy as np
 import random
-import lm_eval
 import copy
 
 def setup_seed(seed):
