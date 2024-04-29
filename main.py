@@ -242,7 +242,6 @@ def fl_finetune(
                 )
 
     if not ddp and torch.cuda.device_count() > 1:
-        print("Is it here??????")
         model.is_parallelizable = True
         model.model_parallel = True
 
