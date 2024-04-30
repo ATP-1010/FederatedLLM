@@ -54,7 +54,7 @@ class GeneralClient:
             evaluation_strategy="steps" if self.local_val_set_size > 0 else "no",
             save_strategy="steps",
             eval_steps=200 if self.local_val_set_size > 0 else None,
-            save_steps=200,
+            save_steps=5000000,
             output_dir=self.local_output_dir,
             save_total_limit=1,
             load_best_model_at_end=True if self.local_val_set_size > 0 else False,
