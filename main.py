@@ -259,7 +259,7 @@ def fl_finetune(
         selected_clients_set = client_selection(num_clients, client_selection_frac, client_selection_strategy,
                                                 other_info=epoch)
 
-        for client_id in selected_clients_set:
+        '''for client_id in selected_clients_set:
             if full == False:
                 if Adalora:
                     config = AdaLoraConfig(
@@ -328,8 +328,8 @@ def fl_finetune(
                 epoch, local_dataset_len_dict, previously_selected_clients_set)
             del client
 
-        print("Collecting the weights of clients and performing aggregation")
-        #local_dataset_len_dict = [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]
+        print("Collecting the weights of clients and performing aggregation")'''
+        local_dataset_len_dict = [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]
         
         model = FedAvg(model,
                        selected_clients_set,
