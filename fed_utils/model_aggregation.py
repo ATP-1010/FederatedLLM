@@ -16,7 +16,7 @@ def FedAvg(model, selected_clients_set, output_dir, local_dataset_len_dict, epoc
     for k, client_id in enumerate(selected_clients_set):
         single_output_dir = os.path.join(output_dir, str(epoch), "local_output_{}".format(client_id),
                                          "pytorch_model.bin")
-        single_weights = torch.load(single_output_dir).cpu()
+        single_weights = torch.load(single_output_dir, map_location = 'cpu')
         #print(single_weights)
         #print("y")
         x = 0
