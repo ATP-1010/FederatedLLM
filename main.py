@@ -385,6 +385,10 @@ def fl_finetune(
         #os.system("lm_eval --model_args pretrained={current_dir},parallelize=True,load_in_4bit=False --tasks arc_easy,hellaswag,mmlu,truthfulqa --device cuda --output_path {current_dir}".format(current_dir = os.path.join(output_dir, str(epoch))))
         if stacking:
             model = model.merge_and_unload()
+
+        if epoch < (num_communication_rounds - 1):
+            rm_dir = os.path.join(output_dir, str(epoch))
+            os.system("rm -rf {xxxxx}".format(xxxxx = rm_dir))
             
     #os.system("lm_eval --model_args pretrained=huggyllama/llama-7b,parallelize=True,load_in_4bit=False,peft={current_dir} --tasks arc_challenge,mmlu --device cuda --output_path {current_dir}".format(current_dir = os.path.join(output_dir, str(epoch))))
     #print(acc_list)
