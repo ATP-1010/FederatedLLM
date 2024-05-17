@@ -121,7 +121,7 @@ def fl_finetune(
             torch_dtype=torch.float32,
             device_map=device_map,
         )
-    elif global_model == 'google/gemma-2b':
+    elif global_model == 'google/gemma-2b' or global_model == 'google/gemma-7b':
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
             load_in_8bit=False,
@@ -140,7 +140,7 @@ def fl_finetune(
 
     if global_model == 'gpt2':
         tokenizer = GPT2Tokenizer.from_pretrained(global_model)
-    elif global_model == 'google/gemma-2b':
+    elif global_model == 'google/gemma-2b' or global_model == 'google/gemma-7b':
         tokenizer = AutoTokenizer.from_pretrained(global_model, token='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',)
     else:
         tokenizer = LlamaTokenizer.from_pretrained(global_model, token="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",)
