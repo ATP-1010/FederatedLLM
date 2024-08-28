@@ -127,7 +127,7 @@ def fl_finetune(
             load_in_8bit=False,
             torch_dtype=torch.float32,
             device_map=device_map,
-            token='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',
+            token='your token',
         )
     else:
         model = LlamaForCausalLM.from_pretrained(
@@ -135,7 +135,7 @@ def fl_finetune(
             load_in_8bit=False,
             torch_dtype=torch.float32,
             device_map=device_map,
-            token="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",
+            token="your token",
         )
 
     if global_model == 'gpt2':
