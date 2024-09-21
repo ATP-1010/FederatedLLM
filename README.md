@@ -7,6 +7,9 @@ The LoRA fine-tuning method includes FLoRA, FedIT, and Zero-Padding. You can als
 ## Requirments
 Install all the packages from requirments.txt
 * pip install -r requirements.txt
+* git clone https://github.com/EleutherAI/lm-evaluation-harness
+* cd lm-evaluation-harness
+* pip install -e .
 
 ## Data
 * The training dataset of WizardLLM has already been downloaded and split in ./data_wiz/ fold.
