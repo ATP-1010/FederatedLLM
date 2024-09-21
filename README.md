@@ -1,8 +1,8 @@
 # FLoRA: Federated Fine-Tuning Large Language Models with Heterogeneous Low-Rank Adaptations
 Code of paper : [FLoRA: Federated Fine-Tuning Large Language Models with Heterogeneous Low-Rank Adaptations](https://arxiv.org/pdf/2409.05976).
 
-You can use this code to fine-tune LLMs with LoRA by datasets.
-The LoRA fine-tuning method includes FLoRA, FedIT, and Zero-Padding. You can also use heterogeneous LoRA rank setting in FLoRA and Zero-Padding.
+You can use this code to fine-tune LLMs with LoRA by WizardLLM dataset or other datasets.
+The LoRA fine-tuning method includes FLoRA, FedIT, and Zero-Padding. You can also use heterogeneous LoRA rank settings in FLoRA and Zero-Padding.
 
 ## Requirments
 Install all the packages from requirments.txt
