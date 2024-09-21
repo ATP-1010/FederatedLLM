@@ -6,23 +6,17 @@ The LoRA fine-tuning method includes FLoRA, FedIT, and Zero-Padding. You can als
 
 ## Requirments
 Install all the packages from requirments.txt
-* Python3
-* Pytorch
-* Torchvision
+* pip install -r requirements.txt
 
 ## Data
-* Download train and test datasets manually or they will be automatically downloaded from torchvision datasets.
-* Experiments are run on Wizard and MMLU.
-* To use your own dataset: Move your dataset to data directory and write a wrapper on pytorch dataset class.
+* The training dataset of WizardLLM has already been downloaded and split in ./data_wiz/ fold.
+* If you want to use your dataset, use the same format as ./data_wiz/.
 
 ## Running the experiments
-* To run the FLoRA algorithms with global/local schedulers, run:
+* To run the FLoRA algorithms in different settings:
 ```
 
 ```
-To run NON-IID settings, the iid parameter should be 0.
-FedHyper-FULL can run both global and local schedulers
-
 * To run the baselines in our paper, here are some examples:
 ```
 
