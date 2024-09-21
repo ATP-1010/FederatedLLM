@@ -16,19 +16,14 @@ Install all the packages from requirments.txt
 * If you want to use your dataset, use the same format as ./data_wiz/.
 
 ## Running the experiments
-* To run the FLoRA algorithms in a homogeneous LoRA setting:
+* To run the FLoRA algorithm (--stacking: True) and FedIT (--stacking False) in a homogeneous LoRA setting:
 ```
-python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './Flora-llama7b-wiz-homo/' --num_communication_rounds 3 --local_num_epochs 1 
+python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './FloRA-llama7b-wiz-homo/' --num_communication_rounds 3 --local_num_epochs 1 --stacking True
+python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './FedIT-llama7b-wiz-homo/' --num_communication_rounds 3 --local_num_epochs 1 --stacking False
 ```
-* To run the FLoRA algorithms in a heterogeneous LoRA setting:
+* To run the FLoRA algorithm (--stacking: True) and Zero-Padding (--stacking False --zero_padding True) in a heterogeneous LoRA setting:
 ```
-python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './Flora-llama7b-wiz-heter/' --num_communication_rounds 3 --local_num_epochs 1 
-```
-* To run the FLoRA algorithms in a heterogeneous LoRA setting:
-```
-python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './Flora-llama7b-wiz-heter/' --num_communication_rounds 3 --local_num_epochs 1 
+python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './FloRA-llama7b-wiz-heter/' --num_communication_rounds 3 --local_num_epochs 1 --stacking True --heter True
+python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --output_dir './FedIT-llama7b-wiz-heter/' --num_communication_rounds 3 --local_num_epochs 1 --stacking False --heter True --zero_padding True
 ```
 -----
-
-
-sh run_wiz.sh
