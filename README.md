@@ -31,5 +31,5 @@ python main.py --global_model 'huggyllama/llama-7b' --data_path  "./data_wiz" --
 ```
 lm_eval --model_args pretrained=./FloRA-llama7b-wiz-homo/,parallelize=True,load_in_4bit=False, --tasks mmlu --num_fewshot 5 --batch_size 16 --output_path ../FloRA-llama7b-wiz-homo/
 ```
-* To evaluate on MT-Bench, please follow the instructions on their websites:
+* To evaluate on MT-Bench, please follow the instructions on their websites: https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge
 -----
