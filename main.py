@@ -132,9 +132,9 @@ def fl_finetune(
     if global_model == 'gpt2':
         tokenizer = GPT2Tokenizer.from_pretrained(global_model)
     elif global_model == 'google/gemma-2b' or global_model == 'google/gemma-7b':
-        tokenizer = AutoTokenizer.from_pretrained(global_model, token='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',)
+        tokenizer = AutoTokenizer.from_pretrained(global_model, token='your_token',)
     else:
-        tokenizer = LlamaTokenizer.from_pretrained(global_model, token="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",)
+        tokenizer = LlamaTokenizer.from_pretrained(global_model, token="your_token",)
 
     tokenizer.pad_token_id = (
         0
