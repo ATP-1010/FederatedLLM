@@ -78,11 +78,11 @@ class GeneralClient:
                         "default" in name))
         self.params_dict_new = OrderedDict((name, param.detach()) for name, param in self.model.named_parameters() if
                                            "default" in name)
-        '''self.model.state_dict = (
+        self.model.state_dict = (
             lambda instance, *_, **__: get_peft_model_state_dict(
                 instance, self.params_dict_new, "default"
             )
-        ).__get__(self.model, type(self.model))'''
+        ).__get__(self.model, type(self.model))
 
     def train(self):
         self.local_trainer.train()
