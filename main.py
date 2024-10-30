@@ -199,18 +199,6 @@ def fl_finetune(
     #model = prepare_model_for_int8_training(model)
     if full == False:
         if stacking == False:
-            config = LoraConfig(
-                base_model_name_or_path=global_model,
-                r = lora_r,
-                lora_alpha = lora_alpha,
-                target_modules = lora_target_modules,
-                lora_dropout = lora_dropout,
-                bias = "none",
-                task_type = "CAUSAL_LM",
-            )
-            model = get_peft_model(model, config)
-        
-        else:
             if zero_padding:
                 config_ori = LoraConfig(
                     base_model_name_or_path=global_model,
@@ -222,15 +210,27 @@ def fl_finetune(
                     task_type = "CAUSAL_LM",
                 )
             else:
-                config_ori = LoraConfig(
+                config = LoraConfig(
                     base_model_name_or_path=global_model,
-                    r = lora_r * num_clients,
-                    lora_alpha = lora_alpha * num_clients,
+                    r = lora_r,
+                    lora_alpha = lora_alpha,
                     target_modules = lora_target_modules,
                     lora_dropout = lora_dropout,
                     bias = "none",
                     task_type = "CAUSAL_LM",
                 )
+            model = get_peft_model(model, config)
+        
+        else:
+            config_ori = LoraConfig(
+                base_model_name_or_path=global_model,
+                r = lora_r * num_clients,
+                lora_alpha = lora_alpha * num_clients,
+                target_modules = lora_target_modules,
+                lora_dropout = lora_dropout,
+                bias = "none",
+                task_type = "CAUSAL_LM",
+            )
 
     if not ddp and torch.cuda.device_count() > 1:
         model.is_parallelizable = True
