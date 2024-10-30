@@ -95,8 +95,8 @@ class GeneralClient:
         os.makedirs(single_output_dir, exist_ok=True)
         torch.save(new_adapter_weight, single_output_dir + "/pytorch_model.bin")
 
-        '''older_adapter_weight = get_peft_model_state_dict(self.model, self.params_dict_old, "default")
-        set_peft_model_state_dict(self.model, older_adapter_weight, "default")'''
+        older_adapter_weight = get_peft_model_state_dict(self.model, self.params_dict_old, "default")
+        set_peft_model_state_dict(self.model, older_adapter_weight, "default")
         previously_selected_clients_set = previously_selected_clients_set | set({self.client_id})
         last_client_id = self.client_id
 
