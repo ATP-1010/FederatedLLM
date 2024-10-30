@@ -291,7 +291,20 @@ def fl_finetune(
                             model_client = copy.deepcopy(model)
                             model_client = get_peft_model(model_client, config)
                     else:
-                        model_client = model
+                        if heter:
+                            config = LoraConfig(
+                            r=local_ranks[client_id],
+                            lora_alpha=2*local_ranks[client_id],
+                            target_modules=lora_target_modules,
+                            lora_dropout=lora_dropout,
+                            bias="none",
+                            task_type="CAUSAL_LM",
+                            base_model_name_or_path=global_model,
+                            )
+                            model_client = copy.deepcopy(model)
+                            model_client = get_peft_model(model_client, config)
+                        else:
+                            model_client = model
             
             else:
                 model_client = model
