@@ -91,11 +91,35 @@ def FedAvg(model, selected_clients_set, output_dir, local_dataset_len_dict, epoc
                                     weighted_single_weights[key] = torch.cat(new, dim=1)
 
             else:
-                if k == 0:
-                    weighted_single_weights = {key: single_weights[key] * (weights_array[k]) for key in
-                                            single_weights.keys()}
+                if zero_padding:
+                    max_lora = max(local_ranks)
+                    if k == 0:
+                        weighted_single_weights = single_weights
+                        for key in weighted_single_weights.keys():
+                            if single_weights[key].shape[0] == local_ranks[client_id]:
+                                pad = ZeroPad2d(padding=(0, 0, 0, max_lora-local_ranks[client_id]))
+                                weighted_single_weights[key] = pad(weighted_single_weights[key]) * (weights_array[k])
+                            elif single_weights[key].shape[1] == local_ranks[client_id]:
+                                pad = ZeroPad2d(padding=(0, max_lora-local_ranks[client_id], 0, 0))
+                                weighted_single_weights[key] = pad(weighted_single_weights[key]) * (weights_array[k])
+                    else:
+                        for key in single_weights.keys():
+                            #print(single_weights[key].shape)
+                            if single_weights[key].shape[0] == local_ranks[client_id]:
+                                pad = ZeroPad2d(padding=(0, 0, 0, max_lora-local_ranks[client_id]))
+                                single_weights[key] = pad(single_weights[key]) * (weights_array[k])
+                                weighted_single_weights[key] += single_weights[key]
+                            elif single_weights[key].shape[1] == local_ranks[client_id]:
+                                pad = ZeroPad2d(padding=(0, max_lora-local_ranks[client_id], 0, 0))
+                                single_weights[key] = pad(single_weights[key]) * (weights_array[k])
+                                #print(single_weights[key][255,32])
+                                weighted_single_weights[key] += single_weights[key]
                 else:
-                    weighted_sindgle_weights = {key: weighted_single_weights[key] + single_weights[key] * (weights_array[k])
+                    if k == 0:
+                        weighted_single_weights = {key: single_weights[key] * (weights_array[k]) for key in
+                                            single_weights.keys()}
+                    else:
+                        weighted_sindgle_weights = {key: weighted_single_weights[key] + single_weights[key] * (weights_array[k])
                                             for key in
                                             single_weights.keys()}
 
