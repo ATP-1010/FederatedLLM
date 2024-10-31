@@ -54,7 +54,7 @@ def fl_finetune(
         # aggregation mode
         stacking: bool = False,
         # evaluation
-        dev_data_path: str = './test_data/mmlu_test_1444.jsonl',
+        dev_data_path: str = './mmlu_test_1444.jsonl',
         # heterogeneous
         heter: bool = False,
         local_ranks: List[int] = [64, 32, 16, 16, 8, 8, 4, 4, 4, 4],
