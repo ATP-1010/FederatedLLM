@@ -378,9 +378,9 @@ def fl_finetune(
 
             print('save model')
         
-        '''acc = global_evaluation(model, tokenizer, prompter, dev_data_path)
-        print(acc)
-        acc_list.append(acc)'''
+        acc = global_evaluation(model, tokenizer, prompter, dev_data_path)
+        print('Acc of Epoch', str(epoch), 'is:', acc)
+        acc_list.append(acc)
         '''x_dir = os.path.join(output_dir, str(epoch))
         current_dir = x_dir # + "/temp/"
         print(current_dir)'''
@@ -397,9 +397,9 @@ def fl_finetune(
         if epoch < (num_communication_rounds - 1):
             rm_dir = os.path.join(output_dir, str(epoch))
             os.system("rm -rf {xxxxx}".format(xxxxx = rm_dir))
-            
+
+    print(acc_list)          
     #os.system("lm_eval --model_args pretrained=huggyllama/llama-7b,parallelize=True,load_in_4bit=False,peft={current_dir} --tasks arc_challenge,mmlu --device cuda --output_path {current_dir}".format(current_dir = os.path.join(output_dir, str(epoch))))
-    #print(acc_list)
     filename = output_dir + 'log.txt'
     file = open(filename,'a')
     for i in range(len(acc_list)):
