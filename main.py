@@ -31,16 +31,16 @@ def fl_finetune(
         num_communication_rounds: int = 5,
         num_clients: int = 10,
         # Local training hyperparams
-        local_batch_size: int = 8,  # 64,
-        local_micro_batch_size: int = 2,
+        local_batch_size: int = 128,  # 64,
+        local_micro_batch_size: int = 16,
         local_num_epochs: int = 3,
-        local_learning_rate: float = 3e-5,
+        local_learning_rate: float = 3e-4,
         local_val_set_size: int = 0,
         local_save_steps: int = 3,
         cutoff_len: int = 512,
         # LoRA hyperparams
-        lora_r: int = 8,
-        lora_alpha: int = 16,
+        lora_r: int = 16,
+        lora_alpha: int = 32,
         lora_dropout: float = 0.05,
         lora_target_modules: List[str] = [
             "q_proj",
