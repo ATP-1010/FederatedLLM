@@ -219,7 +219,7 @@ def fl_finetune(
                     bias = "none",
                     task_type = "CAUSAL_LM",
                 )
-            model = get_peft_model(model, config)
+                model = get_peft_model(model, config)
         
         else:
             config_ori = LoraConfig(
